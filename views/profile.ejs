@@ -1,0 +1,39 @@
+<main>
+    
+    <header>
+        <link rel='stylesheet' href='.//stylesheets/profile.css' />
+      <img src="https://i.pravatar.cc/60?img=1" alt="Sally Ramos">
+      <div>
+        <h2><%= user.username %></h2>
+        <p>@<%= user.username %></p>
+      </div>
+      <!-- <button action="/logout" type="button">LogOut</button> -->
+      <button><a  href="/logout">LogOut</a>
+      </button>
+     
+    </header>
+    <section>
+      <div>
+        <p>Product Designer at @Company.<br>Working on @myproject in my free time</p>
+        <div>
+          <p><span>15k</span> Followers</p>
+          <p><span>7k</span> Following</p>
+          <p>Since April 30, 2023</p>
+        </div>
+      </div>
+    </section>
+</main>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="text" name="filecaption" placeholder="filecaption" />
+    <input type="file" name="file" />
+    <button type="submit">Upload</button>
+  </form>
+  <div class="container">
+
+    <div class="box">
+        <% user.posts.forEach(function(post){ %>
+            <img src="/images/uploads/<%= post.image %>" alt="image">
+            <div class="caption"><%= post.content %></div> 
+<% }) %>
+     </div> 
+  </div>

@@ -1,0 +1,155 @@
+main {
+    width: 14rem;
+    background-color: var(--bg-clr);
+    backdrop-filter: blur(10px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25);
+    transform-origin: top;
+    position: relative;
+    transition: width var(--speed) ease-in-out;
+  }
+  
+  main > * {
+    /* outline: 1px dashed white;*/
+  }
+  
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  header img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    transition: transform var(--speed);
+  }
+  
+  header > div {
+    transition: transform var(--speed);
+  }
+  
+  header h2 {
+    font-weight: 600;
+  }
+  
+  header p {
+    opacity: 0.5;
+  }
+  
+  header button {
+    cursor: pointer;
+    padding: 0.25rem 1rem;
+    font-size: var(--f-small);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    transition-property: transform, background-color, color;
+    transition-duration: var(--speed), var(--speed), var(--speed);
+    transition-timing-function: ease-in, ease-out, ease-out;
+  }
+  
+  header button:focus-visible,
+  header button:hover {
+    background-color: rgba(238,13,112,1);
+    color: white;
+    outline: none;
+  }
+  
+  section {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-rows: 0fr;
+    font-size: var(--f-small);
+    transition: height var(--speed), grid-template-rows var(--speed);
+  }
+  
+  section > div {
+    overflow: hidden;
+  }
+  
+  section > div > * {
+    transform: translateY(10rem);
+    opacity: 0;
+    transition: transform var(--speed), opacity var(--speed);
+  }
+  
+  main:hover > section > div > * {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  section > div > div {
+    margin-top: 1rem;
+    color: #aaa;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  
+  section > div > div p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  section > div > div > span {
+    font-weight: bold;
+  }
+  
+  main:hover section {
+    grid-template-rows: 1fr;
+  }
+  
+  @media (min-width: 640px) {
+    main {
+      padding: 2rem;
+    }
+    section {
+      margin-top: 0;
+    }
+    section > div > div {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+    /* main hover */
+    main:hover {
+      width: 28rem;
+    }
+    main:hover header img {
+      transform: translateX(-9rem);
+    }
+    main:hover header > div {
+      transform: translateX(-7rem);
+    }
+    main:hover header button {
+      transform: translateX(8rem) translateY(-8rem);
+    }
+    /* delays to stagger transitions - delays ONLY on hover */
+    main:hover header img {
+      transition-delay: calc(var(--delay) * 1);
+    }
+    main:hover header > div {
+      transition-delay: calc(var(--delay) * 2);
+    }
+    main:hover header button {
+      transition-delay: calc(var(--delay) * 3), 0ms, 0ms;
+    }
+    main:hover section {
+      transition-delay: calc(var(--delay) * 4);
+    }
+    main:hover > section > div > p {
+      transition-delay: calc(var(--delay) * 5);
+    }
+    main:hover > section > div > div {
+      transition-delay: calc(var(--delay) * 6);
+    }
+  }
